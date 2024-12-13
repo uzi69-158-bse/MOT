@@ -1,0 +1,43 @@
+device: "cpu"  # Or "cuda" if you have a GPU and CUDA support
+
+model:
+  type: "faster_rcnn"                 # Model type options: faster_rcnn, ssd
+  weights: "default"                  # Use default pretrained weights if available
+  num_classes: 5                      # Number of classes including background; set according to class_labels length
+
+train:
+  directory: "data/train/img1"        # Directory path for training images
+  batch_size: 4                       # Batch size for training
+  epochs: 10                          # Number of epochs for training
+  lr: 0.00001                         # Learning rate for optimizer
+  image_size: 224                     # Input image size for training
+
+test:
+  directory: "data/test/img1"         # Directory path for test images
+  visualize: True                     # Whether to visualize predictions
+
+
+detection:
+  file: "data/train/annotations/instances_default.json"      # Path to det.txt file for annotations (used during training)
+  confidence_threshold: 0.5                                   # Minimum confidence score for detection to be considered valid
+
+tracking:
+  max_age: 30                         # Maximum age for a track (in frames) before it's deleted
+  n_init: 3                           # Number of consecutive detections required to confirm a track
+
+numa:
+  enable: False                       # Set to False if not supported; alternative optimization will be applied
+  node: 0                             # NUMA node to use if enabled (ignored if enable is False)
+  profiler: True                      # Enable NUMA profiler for performance insights (optional)
+
+benchmark:
+  enable: True                        # Enable benchmark mode to test model performance
+  runs: 5                             # Number of benchmark runs for averaging results
+
+class_labels:                         # Predefined labels; each label corresponds to a specific class ID
+  - "background"                      # Class ID 0 (typically background)
+  - "person"                          # Class ID 1
+  - "CCTV"                            # Class ID 2
+  - "car"                             # Class ID 3
+  - "motorcycle"                      # Class ID 4
+  # Additional labels can be added as needed, ensuring that each label matches its class ID

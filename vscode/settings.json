@@ -1,0 +1,44 @@
+{
+    // Python interpreter path (update according to your OS)
+    "python.pythonPath": "${workspaceFolder}\\venv\\Scripts\\python.exe", // For Windows
+
+    // Linting settings
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": true,
+
+    // Formatting settings
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+
+    // Pylance settings for IntelliSense
+    "python.languageServer": "Pylance",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/models",
+        "${workspaceFolder}/trackers",
+        "${workspaceFolder}/utils"
+    ],
+
+    // YAML support
+    "yaml.schemas": {
+        "file:///${workspaceFolder}/config/config.yaml": "*.yaml"
+    },
+
+    // Organize imports on save
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+
+    // Terminal settings
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}"
+    }
+}
